@@ -7,15 +7,12 @@
   </ul>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import axios from 'axios'
+import { ref, computed, onMounted } from 'vue'
+import { useUsersStore } from '@/stores/users'
 
-const users = ref([]);
+const users = computed(() => usersStore.users);
 
-onMounted(async() => {
-  let data = await axios.get("http://localhost:3000/users");
+const usersStore = useUsersStore();
 
-  users.value = data.data.users;
-});
-
+onMounted(async() => await usersStore.fetchUsers());
 </script>
