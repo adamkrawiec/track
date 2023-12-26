@@ -20,15 +20,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useUsersStore } from '@/stores/users';
 import { useRoute } from 'vue-router';
 import type { Ref } from 'vue';
 import type ITaskSummary from '@/types/task-summary';
 
-const props = defineProps({
+interface IProps {
   userId: Number
-});
+}
+
+const props = defineProps<IProps>();
 
 const usersStore = useUsersStore();
 const route = useRoute();
@@ -42,5 +44,5 @@ const backgroundColourClass: String = (status: String) => ({
 const taskSummary: Ref<ITaskSummary[]> = computed(() => usersStore.userTaskSummary);
 
 onMounted(async() => await usersStore.fetchUserTaskSummary(props.userId));
-
+onBeforeUnmount(() => usersStore.userTaskSummary.value = []);
 </script>

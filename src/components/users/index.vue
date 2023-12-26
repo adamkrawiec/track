@@ -1,7 +1,11 @@
 <template>
   <h1>List of users</h1>
   <ul>
-    <li v-for="user in users" :key="user.id">
+    <li
+      v-for="user in users"
+      :key="user.id"
+      class="my-2"
+    >
       <router-link :to="{ name: 'user-show', params: { id: user.id } }">
         {{ user.fullName }}
       </router-link>
