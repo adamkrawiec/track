@@ -1,8 +1,0 @@
-<template>
-  <div class="container mx-auto">
-    <users-index />
-  </div>
-</template>
-<script setup>
-import UsersIndex from '../../components/users/index.vue'
-</script>

@@ -12,19 +12,19 @@ export const useUsersStore = defineStore('users', () => {
   const userTaskSummary: Ref<ITaskSummary[]> = ref([]);
 
   async function fetchUsers () {
-    let data = await axios.get(`${API_BASE_URL}/users`);
+    const data = await axios.get(`${API_BASE_URL}/users`);
 
     users.value = data.data.users;
   }
 
   async function fetchUser (userId: Number) {
-    let data = await axios.get(`${API_BASE_URL}/users/${userId}`);
+    const data = await axios.get(`${API_BASE_URL}/users/${userId}`);
 
     user.value = data.data;
   }
 
   async function fetchUserTaskSummary (userId: Number) {
-    let data = await axios.get(`${API_BASE_URL}/tasks/user/${userId}/summary`);
+    const data = await axios.get(`${API_BASE_URL}/tasks/user/${userId}/summary`);
     userTaskSummary.value = data.data;
   }
 
