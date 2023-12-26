@@ -19,6 +19,6 @@ const route = useRoute();
 
 const user: Ref<IUser> = computed(() => usersStore.user);
 
-onMounted(async() => await usersStore.fetchUser(route.params.id));
+onMounted(async() => await usersStore.fetchUser(parseInt(route.params.id)));
 
 </script>

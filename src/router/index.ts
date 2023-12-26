@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import UsersIndex from '../views/users/users-index.vue'
-import UserShow from '../views/users/user-show.vue'
+import UsersIndex from '@/views/users/users-index.vue'
+import UserShow from '@/views/users/user-show.vue'
+import ItemsIndex from '@/views/items/items-index.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/users/:id',
       name: 'user-show',
       component: UserShow
+    },
+    {
+      path: '/items',
+      name: 'items',
+      component: ItemsIndex
     }
   ]
 })

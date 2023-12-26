@@ -4,8 +4,8 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type IUser from '@/types/user'
 import type ITaskSummary from '@/types/task-summary'
+import { API_BASE_URL } from './constants';
 
-const API_BASE_URL = 'http://localhost:3000';
 export const useUsersStore = defineStore('users', () => {
   const users: Ref<IUser[]> = ref([]);
   const user: Ref<IUser | null> = ref(null);
