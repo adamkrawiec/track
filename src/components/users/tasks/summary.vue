@@ -1,14 +1,21 @@
 <template>
-  <div class="columns-3" v-if="taskSummary">
+  <div class="columns-1 py-2">
+    <h3>Tasks summary:</h3>
+  </div>
+  <div class="columns-3 py-2" v-if="taskSummary">
     <div
       v-for="summary in taskSummary"
       :key="summary.status"
-      class="columns-md"
+      class="columns-md border-2"
     >
-      <h4>{{ summary.status }}</h4>
-      <h5>
-        {{ summary.count }}
-      </h5>
+      <div class="flex justify-center p-2" :class="backgroundColourClass(summary.status)">
+        <h4 class="text-lg">{{ summary.status }}</h4>
+      </div>
+      <div class="flex justify-center p-4 bg-neutral-100">
+        <h5 class="text-md">
+          {{ summary.count }}
+        </h5>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +32,12 @@ const props = defineProps({
 
 const usersStore = useUsersStore();
 const route = useRoute();
+
+const backgroundColourClass: String = (status: String) => ({
+  'completed': 'bg-emerald-200',
+  'open': 'bg-sky-200',
+  'overdue':'bg-sky-200'
+})[status];
 
 const taskSummary: Ref<ITaskSummary[]> = computed(() => usersStore.userTaskSummary);
 

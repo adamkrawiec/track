@@ -1,7 +1,6 @@
 <template>
   <div v-if="user" class="columns-1">
     <div class="columns">
-      <h1>User profile</h1>
       {{ user.fullName }}
     </div>
     <task-summary :user-id="user.id" />
