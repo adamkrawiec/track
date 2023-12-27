@@ -5,11 +5,17 @@
       v-for="item in items"
       :key="`item-${item.id}`"
     >
-      <td> {{ item.title }}</td>
+      <td>
+        <router-link :to="{ name: 'item-show', params: { id: item.id }}">
+          {{ item.title }}
+        </router-link>
+      </td>
       <td> {{ item.createdAt }}</td>
       <td>
         <span v-if="item.author">
-          {{ item.author.fullName }}
+          <router-link :to="{ name: 'user-show', params: { id: item.author.id }}">
+            {{ item.author.fullName }}
+          </router-link>
         </span>
         <span v-else>-</span>
       </td>
