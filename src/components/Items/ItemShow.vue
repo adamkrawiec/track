@@ -1,35 +1,39 @@
 <template>
   <div v-if="item">
+    <div class="columns">
+      <source-image :source="item.source" />
+      <item-author v-if="item.author" :author="item.author" />
+    </div>
     <h3 class="my-2">{{ item.title }}</h3>
     <p>{{ item.body }}</p>
-    <p v-if="item.author" class="my-2">
-      Added by:
-      <router-link :to="{ name: 'user-show', params: { id: item.author.id }}">
-        {{ item.author.fullName }}
-      </router-link>
-    </p>
-    <div class="my-2">
-      <a target="_blank" :href="item.url">
-        See article
-      </a>
+    <div class="my-2" v-if="item.url">
+      <item-cta-button :source="item.source" :url="item.url" />
     </div>
     <div class="my-2">
-      <a @click="router.go(-1)" href="#">Go back</a>
+      <back-button />
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router'
 import { useItemsStore } from '@/stores/items'
-import type IITem from '@/types/item';
-import type { Ref } from 'vue';
+import type IITem from '@/types/item'
+import type { Ref } from 'vue'
+import SourceImage from './shared/SourceImage.vue'
+import ItemAuthor from './shared/ItemAuthor.vue'
+import ItemCtaButton from './shared/ItemCtaButton.vue'
+import BackButton from '@/components/shared/BackButton.vue'
 
 const itemsStore = useItemsStore();
 const route = useRoute();
-const router = useRouter();
 
 const item: Ref<IITem | null> = computed(() => itemsStore.item);
+
+const ctaText = computed(() => ({
+  'medium': 'Read article',
+  'youtube': 'Watch video',
+}[item.value.source]))
 
 onMounted(async() => await itemsStore.fetchItem(route.params.id));
 </script>
