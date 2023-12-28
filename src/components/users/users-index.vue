@@ -3,10 +3,10 @@
   <ul>
     <li
       v-for="user in users"
-      :key="user.id"
+      :key="`user-${user.id}`"
       class="my-2"
     >
-      <router-link :to="{ name: 'user-show', params: { id: user.id } }">
+      <router-link :to="{ name: 'user-show', params: { id: `${user.id}` } }">
         {{ user.fullName }}
       </router-link>
     </li>
@@ -16,9 +16,9 @@
 import { computed, onMounted } from 'vue'
 import { useUsersStore } from '@/stores/users'
 
-const users = computed(() => usersStore.users);
-
 const usersStore = useUsersStore();
+
+const users = computed(() => usersStore.users);
 
 onMounted(async() => await usersStore.fetchUsers());
 </script>

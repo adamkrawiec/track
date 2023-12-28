@@ -1,7 +1,7 @@
 export default interface IUser {
-  id: Number,
-  fullName: String,
-  email: String,
+  id: string,
+  fullName: string,
+  email: string,
   createdAt: Date,
   _links: Object
 }
