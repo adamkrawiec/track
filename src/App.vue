@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderBar from '@/components/main/HeaderBar.vue'
 import './app.css'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="Track App" />
-    </div>
-  </header>
+  <header-bar />
   <RouterView />
 </template>
