@@ -6,4 +6,5 @@
 - [ ] form for users
 - [ ] if current user has an opened task for current item (item show page) add button to mark as complete
 - [ ] basic read for activities (index/show)
-- [ ] 
+- [ ] add api.ts with axios actions
+- [x] basic session store (cookie[user_id])

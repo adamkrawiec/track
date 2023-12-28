@@ -1,5 +1,8 @@
 <template>
   <main>
-    This page would look better one day
+    <login-page />
   </main>
 </template>
+<script setup lang="ts">
+import LoginPage from '@/components/main/LoginPage.vue'
+</script>
