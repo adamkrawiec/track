@@ -13,8 +13,12 @@ interface IProps {
 
 const props = defineProps<IProps>();
 
+interface IMap {
+  [key: string]: string
+}
+
 const sourceImg: Ref<string> = computed(() => {
-  const mapping = {
+  const mapping: IMap = {
     medium: '/medium.jpeg',
     youtube: '/youtube.png'
   }

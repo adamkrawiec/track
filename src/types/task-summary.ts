@@ -1,4 +1,4 @@
 export default interface ITaskSummary {
-  status: String,
-  count: Number
+  status: string,
+  count: number
 }

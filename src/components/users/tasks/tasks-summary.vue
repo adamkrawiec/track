@@ -26,21 +26,29 @@ import type { Ref } from 'vue';
 import type ITaskSummary from '@/types/task-summary';
 
 interface IProps {
-  userId: Number
+  userId: string
+}
+
+interface IMap {
+  [key: string]: string
 }
 
 const props = defineProps<IProps>();
 
 const usersStore = useUsersStore();
 
-const backgroundColourClass: String = (status: String) => ({
-  'completed': 'bg-emerald-200',
-  'open': 'bg-sky-200',
-  'overdue':'bg-sky-200'
-})[status];
+function backgroundColourClass(status: string): string {
+  const mapping: IMap = {
+    'completed': 'bg-emerald-200',
+    'open': 'bg-sky-200',
+    'overdue':'bg-sky-200'
+  };
+
+  return mapping[status] || 'bg-sky-200'
+};
 
 const taskSummary: Ref<ITaskSummary[]> = computed(() => usersStore.userTaskSummary);
 
 onMounted(async() => await usersStore.fetchUserTaskSummary(props.userId));
-onBeforeUnmount(() => usersStore.userTaskSummary.value = []);
+onBeforeUnmount(() => usersStore.userTaskSummary = []);
 </script>

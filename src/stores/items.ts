@@ -15,7 +15,7 @@ export const useItemsStore = defineStore('items', () => {
     items.value = response.data.items;
   }
 
-  async function fetchItem (itemId: Number) {
+  async function fetchItem (itemId: string) {
     const response = await axios.get(`${API_BASE_URL}/items/${itemId}`);
 
     item.value = response.data.item;

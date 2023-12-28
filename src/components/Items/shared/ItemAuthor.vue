@@ -8,7 +8,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type IUser from '@/types/user.ts'
+import type IUser from "@/types/user.ts"
 
 interface IProps {
   author: IUser

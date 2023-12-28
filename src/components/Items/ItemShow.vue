@@ -19,7 +19,7 @@ import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useItemsStore } from '@/stores/items'
 import type IITem from '@/types/item'
-import type { Ref } from 'vue'
+import type { ComputedRef } from 'vue'
 import SourceImage from './shared/SourceImage.vue'
 import ItemAuthor from './shared/ItemAuthor.vue'
 import ItemCtaButton from './shared/ItemCtaButton.vue'
@@ -28,12 +28,9 @@ import BackButton from '@/components/shared/BackButton.vue'
 const itemsStore = useItemsStore();
 const route = useRoute();
 
-const item: Ref<IITem | null> = computed(() => itemsStore.item);
+const item: ComputedRef<IITem | null> = computed(() => itemsStore.item);
 
-const ctaText = computed(() => ({
-  'medium': 'Read article',
-  'youtube': 'Watch video',
-}[item.value.source]))
+const itemId: ComputedRef<string> = computed(() => Array.isArray(route.params.id) ? route.params.id[0]: route.params.id)
 
-onMounted(async() => await itemsStore.fetchItem(route.params.id));
+onMounted(async() => await itemsStore.fetchItem(itemId.value));
 </script>

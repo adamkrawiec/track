@@ -17,13 +17,13 @@ export const useUsersStore = defineStore('users', () => {
     users.value = data.data.users;
   }
 
-  async function fetchUser (userId: Number) {
+  async function fetchUser (userId: string) {
     const data = await axios.get(`${API_BASE_URL}/users/${userId}`);
 
     user.value = data.data;
   }
 
-  async function fetchUserTaskSummary (userId: Number) {
+  async function fetchUserTaskSummary (userId: string) {
     const data = await axios.get(`${API_BASE_URL}/tasks/user/${userId}/summary`);
     userTaskSummary.value = data.data;
   }
