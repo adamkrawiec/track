@@ -11,10 +11,10 @@
     </div>
     <div v-if="item.task">
       <span v-if="item.task.completedAt">
-        You have completed the task at {{ formatDate(item.task.completedAt) }}
+        You have completed the task at {{ formatDate(item.task.completedAt, 'MM/DD/YYYY') }}
       </span>
       <span v-else>
-        Task to complete at {{ formatDate(item.task.deadlineAt) }}
+        Task to complete at {{ formatDate(item.task.deadlineAt, 'MM/DD/YYYY') }}
       </span>
     </div>
     <div class="my-2">
@@ -25,7 +25,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import moment from 'moment'
 import { useItemsStore } from '@/stores/items'
 import type IITem from '@/types/item'
 import type { ComputedRef } from 'vue'
@@ -33,13 +32,10 @@ import SourceImage from './shared/SourceImage.vue'
 import ItemAuthor from './shared/ItemAuthor.vue'
 import ItemCtaButton from './shared/ItemCtaButton.vue'
 import BackButton from '@/components/shared/BackButton.vue'
+import { formatDate } from '@/utils/format_date.ts'
 
 const itemsStore = useItemsStore();
 const route = useRoute();
-
-function formatDate (date: Date): string {
-  return moment(String(date)).format('MM/DD/YYYY')
-}
 
 const item: ComputedRef<IITem | null> = computed(() => itemsStore.item);
 
