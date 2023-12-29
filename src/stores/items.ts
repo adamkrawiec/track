@@ -23,7 +23,8 @@ export const useItemsStore = defineStore('items', () => {
   async function fetchItem (itemId: string) {
     const response = await axios.get(
       `${API_BASE_URL}/items/${itemId}`,
-      { withCredentials: true }
+      { params: { include_task: true },
+        withCredentials: true }
       );
 
     item.value = response.data.item;

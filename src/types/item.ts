@@ -8,5 +8,9 @@ export default interface IItem {
   url?: string,
   author?: IUser,
   createdAt: string,
+  task?: {
+    deadlineAt: Date,
+    completedAt: Date,
+  },
   _links: Object
 }
