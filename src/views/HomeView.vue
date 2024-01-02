@@ -1,5 +1,9 @@
 <template>
+  <header-bar />
   <main>
-    This page would look better one day
+    <div>Dummy Home page</div>
   </main>
 </template>
+<script setup lang="ts">
+import HeaderBar from '@/components/main/HeaderBar.vue'
+</script>

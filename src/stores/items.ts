@@ -10,13 +10,20 @@ export const useItemsStore = defineStore('items', () => {
   const item: Ref<IItem | null> = ref(null);
 
   async function fetchItems () {
-    const response = await axios.get(`${API_BASE_URL}/items`);
+    const response = await axios.get(
+      `${API_BASE_URL}/items`,
+      { withCredentials: true }
+    );
 
     items.value = response.data.items;
   }
 
   async function fetchItem (itemId: string) {
-    const response = await axios.get(`${API_BASE_URL}/items/${itemId}`);
+    const response = await axios.get(
+      `${API_BASE_URL}/items/${itemId}`,
+      { params: { include_task: true },
+        withCredentials: true }
+      );
 
     item.value = response.data.item;
   }

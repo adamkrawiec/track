@@ -9,6 +9,14 @@
     <div class="my-2" v-if="item.url">
       <item-cta-button :source="item.source" :url="item.url" />
     </div>
+    <div v-if="item.task">
+      <span v-if="item.task.completedAt">
+        You have completed the task at {{ formatDate(item.task.completedAt, 'MM/DD/YYYY') }}
+      </span>
+      <span v-else>
+        Task to complete at {{ formatDate(item.task.deadlineAt, 'MM/DD/YYYY') }}
+      </span>
+    </div>
     <div class="my-2">
       <back-button />
     </div>
@@ -24,6 +32,7 @@ import SourceImage from './shared/SourceImage.vue'
 import ItemAuthor from './shared/ItemAuthor.vue'
 import ItemCtaButton from './shared/ItemCtaButton.vue'
 import BackButton from '@/components/shared/BackButton.vue'
+import { formatDate } from '@/utils/format_date.ts'
 
 const itemsStore = useItemsStore();
 const route = useRoute();
