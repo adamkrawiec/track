@@ -14,10 +14,15 @@
 import HeaderLogo from './HeaderLogo.vue'
 import HeaderLink from './HeaderLink.vue'
 import { useSessionStore } from '@/stores/session'
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 
 const sessionStore = useSessionStore();
 
 async function logout() {
   await sessionStore.destroySession();
+
+  router.push({ name: "new-session" })
 }
 </script>
