@@ -1,8 +1,9 @@
 <template>
+  <header-bar />
   <main>
-    <login-page />
+    <div>Dummy Home page</div>
   </main>
 </template>
 <script setup lang="ts">
-import LoginPage from '@/components/main/LoginPage.vue'
+import HeaderBar from '@/components/main/HeaderBar.vue'
 </script>

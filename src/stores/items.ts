@@ -4,9 +4,7 @@ import type IItem from '@/types/item'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { API_BASE_URL } from './constants';
-import { useCookies } from '@vueuse/integrations/useCookies'
 
-const cookies = useCookies();
 export const useItemsStore = defineStore('items', () => {
   const items: Ref<IItem[]> = ref([]);
   const item: Ref<IItem | null> = ref(null);
