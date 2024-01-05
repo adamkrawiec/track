@@ -15,7 +15,7 @@
           />
         </div>
         <div class="py-2">
-          <button class="border-2 rounded-lg px-4 py-2 bg-teal-600 text-slate-50" @click="logIn">Log in</button>
+          <button class="border-2 rounded-lg px-4 py-2 bg-orange-600 border-orange-600 text-slate-50" @click="logIn">Log in</button>
         </div>
         <div v-if="sessionError" class="text-red-500">
           {{ sessionError }}

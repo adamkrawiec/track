@@ -28,10 +28,22 @@ export const useItemsStore = defineStore('items', () => {
     item.value = response.data.item;
   }
 
+  async function searchItems(title: string) {
+    const response = await axios.get(
+      `${API_BASE_URL}/items`,
+      {
+        params: { title }, 
+        withCredentials: true
+      }
+    );
+    items.value = response.data.items;
+  }
+
   return {
     items,
     item,
     fetchItems,
+    searchItems,
     fetchItem
   }
 })

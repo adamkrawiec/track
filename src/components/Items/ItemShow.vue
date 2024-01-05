@@ -1,24 +1,15 @@
 <template>
-  <div v-if="item">
-    <div class="columns">
-      <source-image :source="item.source" />
+  <div class="flex-1 justify-between px-4 mx-auto max-w-screen-xl" v-if="item">
+    <div class="mx-auto w-full max-w-2xl">
+      <source-image class="py-2 w-full" :source="item.source" />
       <item-author v-if="item.author" :author="item.author" />
-    </div>
-    <h3 class="my-2">{{ item.title }}</h3>
-    <p>{{ item.body }}</p>
-    <div class="my-2" v-if="item.url">
-      <item-cta-button :source="item.source" :url="item.url" />
-    </div>
-    <div v-if="item.task">
-      <span v-if="item.task.completedAt">
-        You have completed the task at {{ formatDate(item.task.completedAt, 'MM/DD/YYYY') }}
-      </span>
-      <span v-else>
-        Task to complete at {{ formatDate(item.task.deadlineAt, 'MM/DD/YYYY') }}
-      </span>
-    </div>
-    <div class="my-2">
-      <back-button />
+      <h3 class="text-lg font-bold py-2">{{ item.title }}</h3>
+      <p class="py-4 w-full">{{ item.body }}</p>
+      <item-cta-button v-if="item.url" :source="item.source" :url="item.url" />
+      <item-task v-if="item.task" :task="task" />
+      <div class="pt-3">
+        <back-button />
+      </div>
     </div>
   </div>
 </template>
@@ -31,8 +22,8 @@ import type { ComputedRef } from 'vue'
 import SourceImage from './shared/SourceImage.vue'
 import ItemAuthor from './shared/ItemAuthor.vue'
 import ItemCtaButton from './shared/ItemCtaButton.vue'
+import ItemTask from './shared/ItemTask.vue'
 import BackButton from '@/components/shared/BackButton.vue'
-import { formatDate } from '@/utils/format_date.ts'
 
 const itemsStore = useItemsStore();
 const route = useRoute();
@@ -41,5 +32,6 @@ const item: ComputedRef<IITem | null> = computed(() => itemsStore.item);
 
 const itemId: ComputedRef<string> = computed(() => Array.isArray(route.params.id) ? route.params.id[0]: route.params.id)
 
+const task = computed(() => ({ ...item.value.task, completedAt: null, overdue: true }));
 onMounted(async() => await itemsStore.fetchItem(itemId.value));
 </script>
