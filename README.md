@@ -8,3 +8,5 @@
 - [ ] basic read for activities (index/show)
 - [ ] add api.ts with axios actions
 - [x] basic session store (cookie[user_id])
+- [ ] table to a component
+- [ ] pagination to a component
