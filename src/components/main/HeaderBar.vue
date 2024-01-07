@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper bg-neutral-400 mb-10" >
     <div class="container mx-auto py-4">
       <div class="columns-4">
         <header-logo />

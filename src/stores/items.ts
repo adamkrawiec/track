@@ -8,8 +8,9 @@ import { API_BASE_URL } from './constants';
 export const useItemsStore = defineStore('items', () => {
   const items: Ref<IItem[]> = ref([]);
   const item: Ref<IItem | null> = ref(null);
-  const loading: Ref<Boolean> = ref(false);
+  const loading: Ref<boolean> = ref(false);
   const page: Ref<number> = ref(1);
+  const totalCount: Ref<number> = ref(2);
 
   async function fetchItems () {
     loading.value = true;
@@ -55,6 +56,7 @@ export const useItemsStore = defineStore('items', () => {
     item,
     loading,
     page,
+    totalCount,
     fetchItems,
     searchItems,
     fetchItem
