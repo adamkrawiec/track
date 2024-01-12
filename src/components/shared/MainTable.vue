@@ -1,10 +1,6 @@
 <template>
   <table class="table-fixed border-collapse w-full border border-slate-400 border-slate-500 bg-white text-sm shadow-sm">
-    <thead>
-      <tr class="bg-white border-b text-gray-700 uppercase bg-gray-50">
-        <slot name="header" />
-      </tr>
-    </thead>
+    <table-header :headers="headers" />
     <tbody>
       <tr v-if="loading" >
         <td colspan="3" class="px-3 py-3 text-slate-500 text-slate-400 text-center">
@@ -28,13 +24,14 @@
   </table>
 </template>
 <script setup lang="ts">
-import type { Ref } from 'vue';
+import TableHeader from './table/TableHeader.vue'
 
 interface IProps {
   loading: boolean,
   items: Array<any>,
   loadingCopy: string,
   emptyCopy: string,
+  headers: Array<object>
 }
 
 defineProps<IProps>();

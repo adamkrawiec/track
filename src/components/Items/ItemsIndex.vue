@@ -11,12 +11,8 @@
         :items="items"
         loading-copy="Loading items..."
         empty-copy="No matching item found..."
+        :headers="headers"
       >
-        <template #header>
-          <th class="px-3 py-3 w-7/12">Title</th>
-          <th class="px-3 py-3">Added at</th>
-          <th class="px-3 py-3">Added by</th>
-        </template>
         <template #data-row="{ item }">
           <item-row :item="item" />
         </template>
@@ -41,6 +37,12 @@ const items = computed(() => itemsStore.items);
 const loading = computed(() => itemsStore.loading);
 const page = computed(() => itemsStore.page); // add getter
 const totalCount = computed(() => itemsStore.totalCount);
+
+const headers = [
+  { label: 'Title', class: "w-7/12" },
+  { label: 'Added at' },
+  { label: 'Added by' }
+];
 
 const onInput = debounce(async () => {
   await itemsStore.searchItems(search.value)
