@@ -1,11 +1,13 @@
 <template>
-  <div v-if="user" class="columns-1">
-    <div class="columns">
-      <img class="w-24" src="/avatar.jpeg">
-      {{ user.fullName }}
-    </div>
-    <tasks-summary :user-id="userId" />
-  </div>
+  <main-panel v-if="user">
+    <template #body>
+      <div class="columns">
+        <img class="w-24" src="/avatar.jpeg">
+          {{ user.fullName }}
+      </div>
+      <tasks-summary :user-id="userId" />
+    </template>
+  </main-panel>
 </template>
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
@@ -14,6 +16,7 @@ import { useRoute } from 'vue-router';
 import type { ComputedRef } from 'vue';
 import type IUser from '@/types/user.ts';
 import TasksSummary from './tasks/tasks-summary.vue';
+import MainPanel from '../shared/MainPanel.vue';
 
 const usersStore = useUsersStore();
 const route = useRoute();

@@ -10,6 +10,7 @@ export const useUsersStore = defineStore('users', () => {
   const users: Ref<IUser[]> = ref([]);
   const user: Ref<IUser | null> = ref(null);
   const userTaskSummary: Ref<ITaskSummary[]> = ref([]);
+  const loading: Ref<boolean> = ref(false);
 
   async function fetchUsers () {
     const data = await axios.get(`${API_BASE_URL}/users`);
@@ -30,6 +31,7 @@ export const useUsersStore = defineStore('users', () => {
 
   return { users,
            user,
+           loading,
            fetchUsers,
            fetchUser,
            userTaskSummary,

@@ -1,25 +1,27 @@
 <template>
-  <div class="flex-1 justify-between px-4 mx-auto max-w-screen-xl bg-neutral-100 shadow-lg py-4 mb-10">
-    <div class="mx-auto w-full max-w-4xl">
-      <h1 class="pb-2">Items list</h1>
-      <div class="py-2">
-        Search
-        <input class="px-1 border-2 rounded-md" v-model="search" />
+    <main-panel>
+    <template #body>
+      <div class="mx-auto w-full max-w-4xl">
+        <h1 class="pb-2">Items list</h1>
+        <div class="py-2">
+          Search
+          <input class="px-1 border-2 rounded-md" v-model="search" />
+        </div>
+        <main-table
+          :loading="loading"
+          :items="items"
+          loading-copy="Loading items..."
+          empty-copy="No matching item found..."
+          :headers="headers"
+        >
+          <template #data-row="{ item }">
+            <item-row :item="item" />
+          </template>
+        </main-table>
+        <pagination :pages="totalCount" :active-page="page" @page-change="onPageChange" />
       </div>
-      <main-table
-        :loading="loading"
-        :items="items"
-        loading-copy="Loading items..."
-        empty-copy="No matching item found..."
-        :headers="headers"
-      >
-        <template #data-row="{ item }">
-          <item-row :item="item" />
-        </template>
-      </main-table>
-      <pagination :pages="totalCount" :active-page="page" @page-change="onPageChange" />
-    </div>
-  </div>
+    </template>
+  </main-panel>
 </template>
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
@@ -28,6 +30,7 @@ import { useItemsStore } from '@/stores/items'
 import MainTable from '../shared/MainTable.vue'
 import ItemRow from './shared/ItemRow.vue'
 import Pagination from '../shared/Pagination.vue'
+import MainPanel from '../shared/MainPanel.vue'
 
 const itemsStore = useItemsStore();
 

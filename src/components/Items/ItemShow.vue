@@ -1,17 +1,19 @@
 <template>
-  <div class="flex-1 justify-between px-4 mx-auto max-w-screen-xl" v-if="item">
-    <div class="mx-auto w-full max-w-2xl">
-      <source-image class="py-2 w-full" :source="item.source" />
-      <item-author v-if="item.author" :author="item.author" />
-      <h3 class="text-lg font-bold py-2">{{ item.title }}</h3>
-      <p class="py-4 w-full">{{ item.body }}</p>
-      <item-cta-button v-if="item.url" :source="item.source" :url="item.url" />
-      <item-task v-if="item.task" :task="task" />
-      <div class="pt-3">
-        <back-button />
+  <main-panel v-if="item">
+    <template #body>
+      <div class="mx-auto w-full max-w-2xl">
+        <source-image class="py-2 w-full" :source="item.source" />
+        <item-author v-if="item.author" :author="item.author" />
+        <h3 class="text-lg font-bold py-2">{{ item.title }}</h3>
+        <p class="py-4 w-full">{{ item.body }}</p>
+        <item-cta-button v-if="item.url" :source="item.source" :url="item.url" />
+        <item-task v-if="item.task" :task="task" />
+        <div class="pt-3">
+          <back-button />
+        </div>
       </div>
-    </div>
-  </div>
+    </template>
+  </main-panel>
 </template>
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
@@ -24,6 +26,7 @@ import ItemAuthor from './shared/ItemAuthor.vue'
 import ItemCtaButton from './shared/ItemCtaButton.vue'
 import ItemTask from './shared/ItemTask.vue'
 import BackButton from '@/components/shared/BackButton.vue'
+import MainPanel from '../shared/MainPanel.vue'
 
 const itemsStore = useItemsStore();
 const route = useRoute();

@@ -1,6 +1,6 @@
 <template>
   <header-bar />
-  <div class="container mx-auto">
+  <div class="container mx-auto min-h-screen">
     <items-index />
   </div>
 </template>
