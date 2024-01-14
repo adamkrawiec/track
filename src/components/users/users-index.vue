@@ -18,7 +18,7 @@
               </router-link>
             </td>
             <td>
-              {{ new Date(user.createdAt).toDateString() }}
+              {{ formatDate(user.createdAt, 'DD/MM/YYYY') }}
             </td>
           </template>
         </main-table>
@@ -31,14 +31,15 @@
 import { computed, onMounted } from 'vue'
 import { useUsersStore } from '@/stores/users'
 import MainTable from '../shared/MainTable.vue'
-import MainPanel from '../shared/MainPanel.vue';
+import MainPanel from '../shared/MainPanel.vue'
+import { formatDate } from '@/utils/format_date.ts'
 
 const usersStore = useUsersStore();
 
 const users = computed(() => usersStore.users);
 const loading = computed(() => usersStore.loading);
 
-const headers = [{label: 'Full name' }, { labe: 'Joined at'}];
+const headers = [{label: 'Full name' }, { label: 'Joined at'}];
 
 onMounted(async() => await usersStore.fetchUsers());
 </script>
