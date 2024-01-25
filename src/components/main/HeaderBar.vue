@@ -10,7 +10,7 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
 import HeaderLogo from './HeaderLogo.vue'
 import HeaderLink from './HeaderLink.vue'
 import { useSessionStore } from '@/stores/session'
