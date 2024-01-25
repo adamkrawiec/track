@@ -7,7 +7,7 @@
         <h3 class="text-lg font-bold py-2">{{ item.title }}</h3>
         <p class="py-4 w-full">{{ item.body }}</p>
         <item-cta-button v-if="item.url" :source="item.source" :url="item.url" />
-        <item-task v-if="item.task" :task="task" />
+        <item-task v-if="item.task" :task="item.task" />
         <div class="pt-3">
           <back-button />
         </div>
@@ -35,6 +35,6 @@ const item: ComputedRef<IITem | null> = computed(() => itemsStore.item);
 
 const itemId: ComputedRef<string> = computed(() => Array.isArray(route.params.id) ? route.params.id[0]: route.params.id)
 
-const task = computed(() => ({ ...item.value.task, completedAt: null, overdue: true }));
+// const task = computed(() => ({ ...item.value.task, completedAt: null, overdue: true }));
 onMounted(async() => await itemsStore.fetchItem(itemId.value));
 </script>

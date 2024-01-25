@@ -15,17 +15,10 @@
 </template>
 <script setup lang="ts">
 import { formatDate } from '@/utils/format_date.ts'
+import type ITask from '../../../types/task'
 
 interface IProps {
-  task: {
-    id: string,
-    deadlineAt: Date,
-    completedAt: Date,
-    overdue: Boolean,
-    _links: {
-      complete: string
-    }
-  }
+  task: ITask | null
 }
 
 defineProps<IProps>();

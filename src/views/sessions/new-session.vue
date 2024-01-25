@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <div class="container mx-auto min-h-screen">
     <login-page />
-  </main>
+  </div>
 </template>
 <script setup lang="ts">
 import LoginPage from '@/components/session/LoginPage.vue'
