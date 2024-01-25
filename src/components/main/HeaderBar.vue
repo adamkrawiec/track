@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper bg-neutral-400 mb-10" >
     <div class="container mx-auto py-4">
       <div class="columns-4">
         <header-logo />
@@ -14,10 +14,15 @@
 import HeaderLogo from './HeaderLogo.vue'
 import HeaderLink from './HeaderLink.vue'
 import { useSessionStore } from '@/stores/session'
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 
 const sessionStore = useSessionStore();
 
 async function logout() {
   await sessionStore.destroySession();
+
+  router.push({ name: "new-session" })
 }
 </script>

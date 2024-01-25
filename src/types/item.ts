@@ -9,8 +9,13 @@ export default interface IItem {
   author?: IUser,
   createdAt: string,
   task?: {
+    id: string,
     deadlineAt: Date,
     completedAt: Date,
+    overdue: boolean,
+    _links: {
+      complete: string
+    }
   },
   _links: Object
 }

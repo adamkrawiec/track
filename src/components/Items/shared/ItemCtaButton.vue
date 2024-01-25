@@ -1,7 +1,9 @@
 <template>
-  <a target="_blank" :href="url">
-    {{ ctaText }}
-  </a>
+  <div class="py-4">
+    <a target="_blank" :href="url" class="border-2 rounded-lg px-4 py-2 bg-orange-600 border-orange-600 text-slate-50">
+      {{ ctaText }}
+    </a>
+  </div>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'

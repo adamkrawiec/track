@@ -4,5 +4,7 @@ import './app.css'
 </script>
 
 <template>
-  <RouterView />
+  <div class="bg-neutral-300">
+    <RouterView />
+  </div>
 </template>
