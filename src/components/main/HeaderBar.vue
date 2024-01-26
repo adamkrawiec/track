@@ -3,9 +3,9 @@
     <div class="container mx-auto py-4">
       <div class="columns-4">
         <header-logo />
-        <header-link page="items" label="Items" />
+        <header-link data-test="items-link" page="items" label="Items" />
         <header-link page="users" label="Users" />
-        <a href="#" @click="logout">Logout</a>
+        <a href="#" @click="logout" data-test="logout-button">Logout</a>
       </div>
     </div>
   </div>
