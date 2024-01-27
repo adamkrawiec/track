@@ -4,8 +4,8 @@
       <div class="mx-auto w-full max-w-2xl">
         <source-image class="py-2 w-full" :source="item.source" />
         <item-author v-if="item.author" :author="item.author" />
-        <h3 class="text-lg font-bold py-2">{{ item.title }}</h3>
-        <p class="py-4 w-full">{{ item.body }}</p>
+        <h3 class="text-lg font-bold py-2" data-test="item-title">{{ item.title }}</h3>
+        <p class="py-4 w-full" data-test="item-body">{{ item.body }}</p>
         <item-cta-button v-if="item.url" :source="item.source" :url="item.url" />
         <item-task v-if="item.task" :task="item.task" />
         <div class="pt-3">
@@ -33,5 +33,5 @@ const itemsStore = useItemsStore();
 
 const item: ComputedRef<IITem | null> = computed(() => itemsStore.item);
 
-onMounted(async() => await itemsStore.fetchItem(props.itemId));
+onMounted(() => itemsStore.fetchItem(props.itemId));
 </script>

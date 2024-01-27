@@ -1,6 +1,11 @@
 <template>
   <div class="py-4">
-    <a target="_blank" :href="url" class="border-2 rounded-lg px-4 py-2 bg-orange-600 border-orange-600 text-slate-50">
+    <a
+      target="_blank"
+      :href="url"
+      class="border-2 rounded-lg px-4 py-2 bg-orange-600 border-orange-600 text-slate-50"
+      data-test="item-link"
+    >
       {{ ctaText }}
     </a>
   </div>

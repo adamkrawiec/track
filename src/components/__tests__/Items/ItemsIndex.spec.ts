@@ -1,11 +1,11 @@
-import { describe, it, expect, vi, afterEach, beforeAll } from 'vitest'
+import { describe, it, expect, vi, afterEach, } from 'vitest'
 import { mount, RouterLinkStub, flushPromises } from '@vue/test-utils'
 import { createTestingPinia } from '@pinia/testing'
 import { nextTick } from 'vue'
 import axios from 'axios'
 
-import ItemsIndex from "../Items/ItemsIndex.vue"
-import type IItem from '../../types/item'
+import ItemsIndex from "@/components/Items/ItemsIndex.vue"
+import type IItem from '@/types/item'
 
 const item: IItem = {
   id: "1",
@@ -57,7 +57,6 @@ describe('ItemsIndex', () => {
 
   it("renders table with items atributes returned by api", async () => {
     vi.spyOn(axios, 'get').mockResolvedValue({ data: { items: [item]}});
-
     const wrapper = await mount(ItemsIndex, {
       stubs: { RouterLinkStub },
       global: {
