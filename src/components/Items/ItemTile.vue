@@ -14,7 +14,7 @@ interface IProps {
   item: {
     id: number,
     title: string,
-    source: string,
+    source: string | undefined,
   } | null
 }
 
