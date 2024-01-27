@@ -8,7 +8,7 @@
         </td>
       </tr>
       <tr v-else-if="items.length === 0" >
-        <td colspan="3" class="px-3 py-3 text-slate-500 text-slate-400 text-center">
+        <td colspan="3" class="px-3 py-3 text-slate-500 text-slate-400 text-center" data-test="empty-placeholder">
           {{ emptyCopy }}
         </td>
       </tr>
@@ -31,7 +31,7 @@ interface IProps {
   items: Array<any>,
   loadingCopy: string,
   emptyCopy: string,
-  headers: Array<object>
+  headers: Array<{ label: string, class?: string | undefined }>
 }
 
 defineProps<IProps>();

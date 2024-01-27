@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest'
 import { createTestingPinia } from '@pinia/testing'
 
-import { mount, RouterLinkStub, shallowMount } from '@vue/test-utils'
+import { mount, RouterLinkStub } from '@vue/test-utils'
 
 import HeaderBar from '../main/HeaderBar.vue'
 import HeaderLink from '../main/HeaderLink.vue'

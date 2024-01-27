@@ -41,7 +41,7 @@ const loading = computed(() => itemsStore.loading);
 const page = computed(() => itemsStore.page); // add getter
 const totalCount = computed(() => itemsStore.totalCount);
 
-const headers = [
+const headers: Array<{ label: string, class?: string | undefined }> = [
   { label: 'Title', class: "w-7/12" },
   { label: 'Added at' },
   { label: 'Added by' }
@@ -58,5 +58,5 @@ async function onPageChange(newPage: number) {
 
 watch(search, onInput);
 
-onMounted(async() => await itemsStore.fetchItems());
+onMounted(() => itemsStore.fetchItems());
 </script>
