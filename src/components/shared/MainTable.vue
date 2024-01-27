@@ -3,12 +3,12 @@
     <table-header :headers="headers" />
     <tbody>
       <tr v-if="loading" >
-        <td colspan="3" class="px-3 py-3 text-slate-500 text-slate-400 text-center">
+        <td colspan="3" class="px-3 py-3 text-slate-500 text-slate-400 text-center" data-test="table-loading">
           {{ loadingCopy }}
         </td>
       </tr>
       <tr v-else-if="items.length === 0" >
-        <td colspan="3" class="px-3 py-3 text-slate-500 text-slate-400 text-center" data-test="empty-placeholder">
+        <td colspan="3" class="px-3 py-3 text-slate-500 text-slate-400 text-center" data-test="table-empty">
           {{ emptyCopy }}
         </td>
       </tr>
@@ -17,6 +17,7 @@
         class="bg-white border-b"
         v-for="item in items"
         :key="`item-${item.id}`"
+        :data-test="`item-${item.id}`"
       >
         <slot name="data-row" :item="item" />
       </tr>

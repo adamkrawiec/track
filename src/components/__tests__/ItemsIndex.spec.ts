@@ -6,12 +6,6 @@ import axios from 'axios'
 
 import ItemsIndex from "../Items/ItemsIndex.vue"
 import type IItem from '../../types/item'
-import { useItemsStore } from '@/stores/items'
-import { mock } from 'node:test'
-
-// const itemsStore = useItemsStore();
-
-// vi.mock('axios');
 
 const item: IItem = {
   id: "1",
@@ -21,6 +15,13 @@ const item: IItem = {
   url: "https://example.com",
   _links: {},
   createdAt: "2021-01-01T00:00:00Z",
+  author: {
+    fullName: "John Doe",
+    id: "1",
+    email: "johndoe@example.com",
+    createdAt: new Date("2021-01-01T00:00:00Z"),
+    _links: {},
+  }
 };
 
 describe('ItemsIndex', () => {
@@ -35,22 +36,24 @@ describe('ItemsIndex', () => {
         plugins: [createTestingPinia({ createSpy: vi.fn })],
       },
     });
-    expect(wrapper.find("[data-test='empty-placeholder']").text()).toContain("No matching item found");
+    expect(wrapper.find("[data-test='table-empty']").text()).toContain("No matching item found");
   });
 
   it("renders loading view while loading", async () => {
-    const wrapper = await mount(ItemsIndex, {
+    const wrapper = mount(ItemsIndex, {
+      stubs: { RouterLinkStub },
       global: {
         plugins: [
           createTestingPinia({ createSpy: vi.fn, stubActions: false })
         ],
       },
     });
+    await nextTick();
     
-    // console.log(wrapper.html());
+    expect(wrapper.find("[data-test='table-loading']").text()).toContain("Loading items...");
   });
 
-  it("renders table with items returned by api", async () => {
+  it("renders table with items atributes returned by api", async () => {
     vi.spyOn(axios, 'get').mockResolvedValue({ data: { items: [item]}});
     const wrapper = await mount(ItemsIndex, {
       stubs: { RouterLinkStub },
@@ -64,6 +67,7 @@ describe('ItemsIndex', () => {
     await nextTick();
     await nextTick();
     
-    expect(wrapper.html()).toContain("My Item");
+    expect(wrapper.find(`[data-test='item-${item.id}']`).html()).toContain("My Item");
+    expect(wrapper.find(`[data-test='item-${item.id}']`).html()).toContain("John Doe");
   });
 })

@@ -4,13 +4,14 @@ import type IItem from '@/types/item'
 import { defineStore } from 'pinia'
 import axios from 'axios'
 import { API_BASE_URL } from './constants';
+import get from 'lodash/get';
 
 export const useItemsStore = defineStore('items', () => {
   const items: Ref<IItem[]> = ref([]);
   const item: Ref<IItem | null> = ref(null);
   const loading: Ref<boolean> = ref(false);
   const page: Ref<number> = ref(1);
-  const totalCount: Ref<number> = ref(2);
+  const totalCount: Ref<number> = ref(1);
 
   async function fetchItems () {
     loading.value = true;
@@ -23,6 +24,7 @@ export const useItemsStore = defineStore('items', () => {
     );
 
     items.value = response.data.items;
+    totalCount.value = get(response, 'data.pagination.totalCount', 1);
     loading.value = false;
   }
 
