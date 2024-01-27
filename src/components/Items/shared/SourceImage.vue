@@ -8,7 +8,7 @@ import { computed } from 'vue'
 import type { Ref } from 'vue'
 
 interface IProps {
-  source: string
+  source: string | undefined
 }
 
 const props = defineProps<IProps>();
@@ -17,12 +17,12 @@ interface IMap {
   [key: string]: string
 }
 
-const sourceImg: Ref<string> = computed(() => {
+const sourceImg: Ref<string | undefined> = computed(() => {
   const mapping: IMap = {
     medium: '/medium.jpeg',
     youtube: '/youtube.png'
   }
-  return mapping[props.source];
+  return props.source && mapping[props.source];
 });
 
 </script>

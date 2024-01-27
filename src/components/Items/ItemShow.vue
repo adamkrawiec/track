@@ -4,8 +4,8 @@
       <div class="mx-auto w-full max-w-2xl">
         <source-image class="py-2 w-full" :source="item.source" />
         <item-author v-if="item.author" :author="item.author" />
-        <h3 class="text-lg font-bold py-2">{{ item.title }}</h3>
-        <p class="py-4 w-full">{{ item.body }}</p>
+        <h3 class="text-lg font-bold py-2" data-test="item-title">{{ item.title }}</h3>
+        <p class="py-4 w-full" data-test="item-body">{{ item.body }}</p>
         <item-cta-button v-if="item.url" :source="item.source" :url="item.url" />
         <item-task v-if="item.task" :task="item.task" />
         <div class="pt-3">
@@ -17,7 +17,6 @@
 </template>
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
 import { useItemsStore } from '@/stores/items'
 import type IITem from '@/types/item'
 import type { ComputedRef } from 'vue'
@@ -28,13 +27,11 @@ import ItemTask from './shared/ItemTask.vue'
 import BackButton from '@/components/shared/BackButton.vue'
 import MainPanel from '../shared/MainPanel.vue'
 
+const props = defineProps<{ itemId: string }>();
+
 const itemsStore = useItemsStore();
-const route = useRoute();
 
 const item: ComputedRef<IITem | null> = computed(() => itemsStore.item);
 
-const itemId: ComputedRef<string> = computed(() => Array.isArray(route.params.id) ? route.params.id[0]: route.params.id)
-
-// const task = computed(() => ({ ...item.value.task, completedAt: null, overdue: true }));
-onMounted(async() => await itemsStore.fetchItem(itemId.value));
+onMounted(() => itemsStore.fetchItem(props.itemId));
 </script>

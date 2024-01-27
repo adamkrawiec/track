@@ -38,9 +38,10 @@ const router = createRouter({
       component: ItemsIndex
     },
     {
-      path: '/items/:id',
+      path: '/items/:itemId',
       name: 'item-show',
-      component: ItemShow
+      component: ItemShow,
+      props: true
     }
   ]
 })

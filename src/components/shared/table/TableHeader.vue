@@ -14,7 +14,7 @@
 </template>
 <script setup lang="ts">
 interface IProps {
-  headers: Array<{ label: string, class: string}>
+  headers: Array<{ label: string, class?: string | undefined}>
 };
 
 defineProps<IProps>();

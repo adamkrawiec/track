@@ -3,7 +3,7 @@ import type IUser from './user';
 export default interface IItem {
   id: string,
   title: string,
-  source: string,
+  source: string | undefined,
   body?: string,
   url?: string,
   author?: IUser,
