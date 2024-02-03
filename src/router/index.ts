@@ -6,6 +6,9 @@ import UserShow from '@/views/users/user-show.vue'
 import ItemsIndex from '@/views/items/items-index.vue'
 import ItemShow from '@/views/items/item-show.vue'
 import { useCookies } from '@vueuse/integrations/useCookies'
+import UserTasks from '../components/users/user-tasks.vue'
+import UserActivities from '../components/users/user-activities.vue'
+import UserHome from '../components/users/user-home.vue'
 
 const cookies = useCookies(['session_id']);
 
@@ -28,9 +31,30 @@ const router = createRouter({
       component: UsersIndex
     },
     {
-      path: '/users/:id',
+      path: '/users/:userId',
       name: 'user-show',
-      component: UserShow
+      component: UserShow,
+      props: true,
+      children: [
+        {
+          path: '',
+          name: 'user-home',
+          props: true,
+          component: UserHome
+        },
+        {
+          path: 'tasks',
+          name: 'user-tasks',
+          props: true,
+          component: UserTasks
+        },
+        {
+          path: 'activities',
+          name: 'user-activities',
+          props: true,
+          component: UserActivities
+        }
+      ]
     },
     {
       path: '/items',

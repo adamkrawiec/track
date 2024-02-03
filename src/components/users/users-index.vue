@@ -13,7 +13,7 @@
           <template #data-row="{ item: user }">
             <td class="px-3 py-3 text-slate-500 text-slate-400 flex items-center">
               <img class="w-16" src="/avatar.jpeg">
-              <router-link :to="{ name: 'user-show', params: { id: `${user.id}` } }">
+              <router-link :to="{ name: 'user-home', params: { userId: user.id } }">
                 {{ user.fullName }}
               </router-link>
             </td>
