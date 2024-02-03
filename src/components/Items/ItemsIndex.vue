@@ -18,28 +18,30 @@
             <item-row :item="item" />
           </template>
         </main-table>
-        <pagination :pages="totalCount" :active-page="page" @page-change="onPageChange" />
+        <pagination :pages="pages" :active-page="page" @page-change="onPageChange" />
       </div>
     </template>
   </main-panel>
 </template>
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted, watch, type ComputedRef } from 'vue'
 import debounce from 'lodash/debounce'
 import { useItemsStore } from '@/stores/items'
 import MainTable from '../shared/MainTable.vue'
 import ItemRow from './shared/ItemRow.vue'
 import Pagination from '../shared/Pagination.vue'
 import MainPanel from '../shared/MainPanel.vue'
+import type IItem from '../../types/item'
 
 const itemsStore = useItemsStore();
 
 const search = ref('');
 
-const items = computed(() => itemsStore.items);
-const loading = computed(() => itemsStore.loading);
-const page = computed(() => itemsStore.page); // add getter
-const totalCount = computed(() => itemsStore.totalCount);
+const items: ComputedRef<IItem[]> = computed(() => itemsStore.items);
+const loading: ComputedRef<boolean> = computed(() => itemsStore.loading);
+const page: ComputedRef<number> = computed(() => itemsStore.page); // add getter
+const totalCount: ComputedRef<number> = computed(() => itemsStore.totalCount);
+const pages: ComputedRef<number> = computed(() => itemsStore.pages);
 
 const headers: Array<{ label: string, class?: string | undefined }> = [
   { label: 'Title', class: "w-7/12" },

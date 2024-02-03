@@ -11,6 +11,7 @@ export const useItemsStore = defineStore('items', () => {
   const item: Ref<IItem | null> = ref(null);
   const loading: Ref<boolean> = ref(false);
   const page: Ref<number> = ref(1);
+  const pages: Ref<number> = ref(1);
   const totalCount: Ref<number> = ref(1);
 
   async function fetchItems () {
@@ -25,6 +26,7 @@ export const useItemsStore = defineStore('items', () => {
 
     items.value = response.data.items;
     totalCount.value = get(response, 'data.pagination.totalCount', 1);
+    pages.value = get(response, 'data.pagination.pages', 1);
     loading.value = false;
   }
 
@@ -58,6 +60,7 @@ export const useItemsStore = defineStore('items', () => {
     item,
     loading,
     page,
+    pages,
     totalCount,
     fetchItems,
     searchItems,

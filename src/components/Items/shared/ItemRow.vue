@@ -4,7 +4,7 @@
     >
       <img src="/item.png" class="w-20"/>
       <router-link
-        :to="{ name: 'item-show', params: { id: item.id }}"
+        :to="{ name: 'item-show', params: { itemId: item.id }}"
         class="px-4"
         :data-test="`item-link-${item.id}`"
       >
