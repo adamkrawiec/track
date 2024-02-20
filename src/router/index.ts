@@ -6,9 +6,9 @@ import UserShow from '@/views/users/user-show.vue'
 import ItemsIndex from '@/views/items/items-index.vue'
 import ItemShow from '@/views/items/item-show.vue'
 import { useCookies } from '@vueuse/integrations/useCookies'
-import UserTasks from '../components/users/user-tasks.vue'
-import UserActivities from '../components/users/user-activities.vue'
-import UserHome from '../components/users/user-home.vue'
+import UserTasks from '../components/users/sub-views/user-tasks.vue'
+import UserActivities from '../components/users/sub-views/user-activities.vue'
+import UserHome from '../components/users/sub-views/user-home.vue'
 
 const cookies = useCookies(['session_id']);
 

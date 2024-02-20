@@ -4,7 +4,7 @@
     <users-index />
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import HeaderBar from '@/components/main/HeaderBar.vue'
 import UsersIndex from '../../components/users/users-index.vue'
 </script>

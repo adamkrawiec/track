@@ -26,7 +26,11 @@
           </router-link>
         </div>
         <div class="pt-4">
-          <router-view></router-view>
+          <router-view v-slot="{ Component }">
+            <transition name="fade">
+              <component :is="Component" />
+            </transition>
+          </router-view>
         </div>
       </template>
     </main-panel>
@@ -38,7 +42,6 @@ import { useUsersStore } from '@/stores/users';
 import type { ComputedRef } from 'vue';
 import type IUser from '@/types/user.ts';
 import MainPanel from '../shared/MainPanel.vue';
-import ItemTile from '@/components/Items/ItemTile.vue';
 
 const props = defineProps<{ userId: string }>();
 

@@ -9,7 +9,7 @@
     <template #data-row="{ item: activity }">
       <td>{{ activity.item.title }}</td>
       <td>{{ activity.verb }}</td>
-      <td>{{ activity.createdAt }}</td>
+      <td>{{ formatDate(activity.createdAt, 'DD/MM/YYYY') }}</td>
     </template>
   </main-table>
 </template>
@@ -18,6 +18,7 @@ import { computed, onMounted } from 'vue';
 
 import MainTable from '@/components/shared/MainTable.vue';
 import { useUsersStore } from '@/stores/users';
+import { formatDate } from '@/utils/format_date.ts'
 
 const props = defineProps<{ userId: string }>();
 

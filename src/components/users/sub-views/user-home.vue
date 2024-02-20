@@ -14,8 +14,8 @@
 import { computed, onMounted } from 'vue';
 import type { ComputedRef } from 'vue';
 import { useUsersStore } from '@/stores/users';
-import type IItem from '../../types/item';
-import ItemTile from '../Items/ItemTile.vue';
+import type IItem from '@/types/item';
+import ItemTile from '@/components/Items/ItemTile.vue';
 
 const props = defineProps<{ userId: string }>();
 
