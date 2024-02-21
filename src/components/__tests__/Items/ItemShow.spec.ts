@@ -29,7 +29,7 @@ describe("ItemShow", () => {
       {
         propsData: { itemId: '1' },
         global: {
-          stubs: ["router-link", "router-view"],
+          stubs: { RouterLinkStub },
           plugins: [createTestingPinia({ createSpy: vi.fn, stubActions: false })],
         },
       }

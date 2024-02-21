@@ -18,7 +18,7 @@
             <item-row :item="item" />
           </template>
         </main-table>
-        <pagination :pages="totalCount" :active-page="page" @page-change="onPageChange" />
+        <table-pagination :pages="totalCount" :active-page="page" @page-change="onPageChange" />
       </div>
     </template>
   </main-panel>
@@ -29,7 +29,7 @@ import debounce from 'lodash/debounce'
 import { useItemsStore } from '@/stores/items'
 import MainTable from '../shared/MainTable.vue'
 import ItemRow from './shared/ItemRow.vue'
-import Pagination from '../shared/Pagination.vue'
+import TablePagination from '../shared/TablePagination.vue'
 import MainPanel from '../shared/MainPanel.vue'
 const itemsStore = useItemsStore();
 

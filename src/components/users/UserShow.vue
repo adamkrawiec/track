@@ -28,11 +28,7 @@
           </router-link>
         </div>
         <div class="pt-4">
-          <router-view v-slot="{ Component }">
-            <Transition name="fade">
-              <component :is="Component" />
-            </Transition>
-          </router-view>
+          <router-view />
         </div>
       </template>
     </main-panel>

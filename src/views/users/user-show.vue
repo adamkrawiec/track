@@ -6,7 +6,7 @@
 </template>
 <script setup lang="ts">
 import HeaderBar from '@/components/main/HeaderBar.vue'
-import UserShow from '@/components/users/user-show.vue';
+import UserShow from '@/components/users/UserShow.vue';
 
 defineProps<{ userId: string }>();
 </script>
