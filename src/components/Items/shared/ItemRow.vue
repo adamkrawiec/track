@@ -12,7 +12,7 @@
       </router-link>
     </td>
     <td class="px-3 py-3 text-slate-500 text-slate-400">
-      {{ item.createdAt }}
+      {{ formatDate(item.createdAt, SHORT_DATE_FORMAT) }}
     </td>
     <td class="px-3 py-3 text-slate-500 text-slate-400">
       <span v-if="item.author">
@@ -25,6 +25,8 @@
 </template>
 <script setup lang="ts">
 import type IItem from '@/types/item';
+import { formatDate, SHORT_DATE_FORMAT } from '@/utils/format_date';
+
 
 interface IProps {
   item: IItem

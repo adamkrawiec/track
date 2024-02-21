@@ -2,14 +2,15 @@
   <h1>Activities</h1>
   <main-table
     :items="activities"
+    :loading="loading"
     loading-copy="Loading activities..."
     empty-copy="No activities found..."
-    :headers="[{ label: 'Title' }, { label: 'Verb' }, { label: 'Date' }]"
+    :headers="headers"
   >
     <template #data-row="{ item: activity }">
       <td>{{ activity.item.title }}</td>
       <td>{{ activity.verb }}</td>
-      <td>{{ formatDate(activity.createdAt, 'DD/MM/YYYY') }}</td>
+      <td>{{ formatDate(activity.createdAt, SHORT_DATE_FORMAT) }}</td>
     </template>
   </main-table>
 </template>
@@ -17,14 +18,20 @@
 import { computed, onMounted } from 'vue';
 
 import MainTable from '@/components/shared/MainTable.vue';
-import { useUsersStore } from '@/stores/users';
-import { formatDate } from '@/utils/format_date.ts'
+import { useUserActivitiesStore } from '../../../stores/user-activities';
+import { formatDate, SHORT_DATE_FORMAT } from '@/utils/format_date';
 
+const headers = [
+  { label: 'Title' },
+  { label: 'Verb' },
+  { label: 'Date' },
+];
 const props = defineProps<{ userId: string }>();
 
-const usersStore = useUsersStore();
+const userActivitiesStore = useUserActivitiesStore();
 
-const activities = computed(() => usersStore.activities);
+const activities = computed(() => userActivitiesStore.activities);
+const loading = computed(() => userActivitiesStore.loading);
 
-onMounted(() => usersStore.fetchUserActivities(props.userId));
+onMounted(() => userActivitiesStore.fetchUserActivities(props.userId));
 </script>

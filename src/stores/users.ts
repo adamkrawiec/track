@@ -2,9 +2,9 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { API_BASE_URL } from './constants';
 import type IUser from '@/types/user'
 import type ITaskSummary from '@/types/task-summary'
-import { API_BASE_URL } from './constants';
 import type IItem from '../types/item'
 import type ITask from '../types/task'
 
@@ -15,7 +15,6 @@ export const useUsersStore = defineStore('users', () => {
   const loading: Ref<boolean> = ref(false);
   const favoriteItem: Ref<IItem | null> = ref(null);
   const lastCompletedItem: Ref<IItem | null> = ref(null);
-  const activities = ref([]);
   const tasks: Ref<ITask[]> = ref([]);
 
   async function fetchUsers () {
@@ -45,12 +44,6 @@ export const useUsersStore = defineStore('users', () => {
     lastCompletedItem.value = data.data.item;
   }
 
-  async function fetchUserActivities (userId: string) {
-    const data = await axios.get(`${API_BASE_URL}/activities/user/${userId}`);
-    console.log(data)
-    activities.value = data.data.data;
-  }
-
   async function fetchUserTasks (userId: string) {
     const data = await axios.get(`${API_BASE_URL}/tasks/user/${userId}`);
     tasks.value = data.data.data;
@@ -62,13 +55,11 @@ export const useUsersStore = defineStore('users', () => {
            favoriteItem,
            lastCompletedItem,
            tasks,
-           activities,
            fetchUsers,
            fetchUser,
            userTaskSummary,
            fetchUserTaskSummary,
            fetchUserFavorite,
            fetchUserLastCompleted,
-           fetchUserActivities,
            fetchUserTasks }
 })

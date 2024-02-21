@@ -12,6 +12,11 @@ const item: IItem = {
   source: "example.com",
   url: 'example.com/abc-123',
   body: "Very long description full of details with a lot of text. Just to make sure it will display correctly.",
+  createdAt: new Date("2021-01-01T00:00:00Z"),
+  _links: {
+    showPath: "/items/1",
+    editPath: "/items/1/edit",
+  }
 };
 
 describe("ItemShow", () => {
@@ -23,8 +28,8 @@ describe("ItemShow", () => {
       ItemShow,
       {
         propsData: { itemId: '1' },
-        stubs: { RouterLinkStub },
         global: {
+          stubs: ["router-link", "router-view"],
           plugins: [createTestingPinia({ createSpy: vi.fn, stubActions: false })],
         },
       }

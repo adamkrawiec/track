@@ -31,7 +31,6 @@ import MainTable from '../shared/MainTable.vue'
 import ItemRow from './shared/ItemRow.vue'
 import Pagination from '../shared/Pagination.vue'
 import MainPanel from '../shared/MainPanel.vue'
-
 const itemsStore = useItemsStore();
 
 const search = ref('');

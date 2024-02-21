@@ -9,13 +9,10 @@
 </template>
 <script setup lang="ts">
 import SourceImage from './shared/SourceImage.vue';
+import type IItem from '@/types/item';
 
 interface IProps {
-  item: {
-    id: number,
-    title: string,
-    source: string | undefined,
-  } | null
+  item: IItem | null
 }
 
 defineProps<IProps>();

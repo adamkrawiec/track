@@ -32,7 +32,7 @@ import { computed, onMounted } from 'vue'
 import { useUsersStore } from '@/stores/users'
 import MainTable from '../shared/MainTable.vue'
 import MainPanel from '../shared/MainPanel.vue'
-import { formatDate } from '@/utils/format_date.ts'
+import { formatDate } from '@/utils/format_date'
 
 const usersStore = useUsersStore();
 

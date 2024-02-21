@@ -3,6 +3,7 @@
   <tasks-summary :user-id="userId" />
   <main-table
     :items="tasks"
+    :loading="loading"
     loading-copy="Loading activities..."
     empty-copy="No activities found..."
     :headers="[{ label: 'Title' }, { label: 'Completed At' }, { label: 'Deadline' }]"
@@ -35,6 +36,7 @@ const props = defineProps<{ userId: string }>();
 const usersStore = useUsersStore();
 
 const tasks = computed(() => usersStore.tasks);
+const loading = computed(() => usersStore.loading); // fixme
 
 onMounted(() => usersStore.fetchUserTasks(props.userId));
 

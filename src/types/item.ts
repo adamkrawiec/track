@@ -7,7 +7,7 @@ export default interface IItem {
   body?: string,
   url?: string,
   author?: IUser,
-  createdAt: string,
+  createdAt: Date,
   task?: {
     id: string,
     deadlineAt: Date,

@@ -4,7 +4,11 @@ import './app.css'
 </script>
 
 <template>
-  <div class="bg-neutral-300">
-    <RouterView />
+  <div>
+    <RouterView v-slot="{ Component }">
+      <Transition name="slide-fade">
+        <component :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
 </template>

@@ -8,18 +8,20 @@
             :to="{ name: 'user-home', params: { userId: props.userId } }"
           >
             <img class="w-24" src="/avatar.jpeg">
-            <h4 class="px-4">{{ user.fullName }}</h4>
+            <h4 class="px-4" data-test="user-name">{{ user.fullName }}</h4>
           </router-link>
         </div>
         <div class="border-b-2 pt-4">
           <router-link
             class="px-2"
+            data-test="user-activities-link"
             :to="{name: 'user-activities', params: { userId: props.userId } }"
           >
             Activities
           </router-link>
           <router-link
             class="px-2"
+            data-test="user-tasks-link"
             :to="{ name: 'user-tasks', params: { userId: props.userId } }"
           >
             Task
@@ -27,9 +29,9 @@
         </div>
         <div class="pt-4">
           <router-view v-slot="{ Component }">
-            <transition name="fade">
+            <Transition name="fade">
               <component :is="Component" />
-            </transition>
+            </Transition>
           </router-view>
         </div>
       </template>
