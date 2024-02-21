@@ -13,7 +13,7 @@
           <template #data-row="{ item: user }">
             <td class="px-3 py-3 text-slate-500 text-slate-400 flex items-center">
               <img class="w-16" src="/avatar.jpeg">
-              <router-link :to="{ name: 'user-show', params: { id: `${user.id}` } }">
+              <router-link :to="{ name: 'user-home', params: { userId: user.id } }">
                 {{ user.fullName }}
               </router-link>
             </td>
@@ -32,7 +32,7 @@ import { computed, onMounted } from 'vue'
 import { useUsersStore } from '@/stores/users'
 import MainTable from '../shared/MainTable.vue'
 import MainPanel from '../shared/MainPanel.vue'
-import { formatDate } from '@/utils/format_date.ts'
+import { formatDate } from '@/utils/format_date'
 
 const usersStore = useUsersStore();
 

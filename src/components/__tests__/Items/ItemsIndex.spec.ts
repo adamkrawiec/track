@@ -14,7 +14,7 @@ const item: IItem = {
   body: "My Item body",
   url: "https://example.com",
   _links: {},
-  createdAt: "2021-01-01T00:00:00Z",
+  createdAt: new Date("2021-01-01T00:00:00Z"),
   author: {
     id: "1",
     fullName: "John Doe",
@@ -32,8 +32,8 @@ describe('ItemsIndex', () => {
   it("renders empty state", () => {
     vi.spyOn(axios, 'get').mockResolvedValue({ data: { items: []}});
     const wrapper = mount(ItemsIndex, {
-      stubs: { RouterLinkStub },
       global: {
+        stubs: ["router-link", "router-view"],
         plugins: [createTestingPinia({ createSpy: vi.fn })],
       },
     });

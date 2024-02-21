@@ -6,8 +6,8 @@ export default interface ITask {
   deadlineAt: Date,
   completedAt: Date,
   overdue: boolean,
-  item: IItem,
-  user: IUser,
+  item?: IItem,
+  user?: IUser,
   _links: {
     complete: string
   }

@@ -37,6 +37,8 @@ const userEmail = ref(null);
 const sessionError = computed(() => sessionStore.sessionError)
 
 const logIn = async () => {
+  if (!userEmail.value) return;
+
   await sessionStore.createSession(userEmail.value);
 
   router.push({ name: "items" })

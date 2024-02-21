@@ -6,7 +6,6 @@ import { mount, RouterLinkStub } from '@vue/test-utils'
 import HeaderBar from '../main/HeaderBar.vue'
 import HeaderLink from '../main/HeaderLink.vue'
 import HeaderLogo from '../main/HeaderLogo.vue'
-import { wrap } from 'module'
 
 describe("HeaderBar", () => {
   const wrapper = mount(HeaderBar, {

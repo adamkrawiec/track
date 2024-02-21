@@ -14,7 +14,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { formatDate } from '@/utils/format_date.ts'
+import { formatDate } from '@/utils/format_date'
 import type ITask from '../../../types/task'
 
 interface IProps {
