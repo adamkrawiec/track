@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item" class="flex px-4 bg-neutral-100 shadow-lg py-4 mb-10 max-w-80">
+  <div v-if="item" class="flex px-4 bg-neutral-100 shadow-lg py-4 mb-10 max-w-80 h-72">
     <router-link :to="{ name: 'item-show', params: { itemId: item.id }}" class="px-4">
       <img src="/item.png" />
       <p class="py-2 text-wrap">{{ item.title }}</p>

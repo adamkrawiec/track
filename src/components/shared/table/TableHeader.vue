@@ -1,6 +1,6 @@
 <template>
     <thead>
-      <tr class="bg-white border-b text-gray-700 uppercase bg-gray-50">
+      <tr class="bg-neutral-200 border-b text-gray-700 uppercase bg-gray-50">
         <th
           class="px-3 py-3"
           :class="header.class"

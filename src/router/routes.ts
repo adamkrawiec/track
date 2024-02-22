@@ -4,9 +4,9 @@ import UsersIndex from '@/views/users/users-index.vue'
 import UserShow from '@/views/users/user-show.vue'
 import ItemsIndex from '@/views/items/items-index.vue'
 import ItemShow from '@/views/items/item-show.vue'
-import UserTasks from '../components/users/sub-views/user-tasks.vue'
-import UserActivities from '../components/users/sub-views/user-activities.vue'
-import UserHome from '../components/users/sub-views/user-home.vue'
+import UserTasks from '@/components/users/sub-views/UserTasks.vue'
+import UserActivities from '@/components/users/sub-views/UserActivities.vue'
+import UserHome from '@/components/users/sub-views/UserHome.vue'
 
 const routes = [
   {
