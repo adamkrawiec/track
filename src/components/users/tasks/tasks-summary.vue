@@ -1,7 +1,4 @@
 <template>
-  <div class="columns-1 py-2">
-    <h3>Tasks summary:</h3>
-  </div>
   <div class="columns-3 py-2" v-if="taskSummary">
     <div
       v-for="summary in taskSummary"

@@ -1,7 +1,12 @@
 <template>
-  <div class="flex justify-between px-4 mx-auto max-w-screen-xl bg-neutral-100 shadow-lg py-4 mb-10">
-    <div class="flex-1">
-      <slot name="body" />
+  <div class="mx-auto max-w-screen-xl">
+    <div class="bg-neutral-200 py-2 px-4">
+      <slot name="header" />
+    </div>
+    <div class="flex justify-between px-4 bg-neutral-100 shadow-lg py-4 mb-10">
+      <div class="flex-1">
+        <slot name="body" />
+      </div>
     </div>
   </div>
 </template>

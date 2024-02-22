@@ -1,10 +1,10 @@
 <template>
-  <div class="flex mx-auto max-w-screen-xl justify-between">
-    <div class="flex-column mr-auto">
+  <div class="flex mx-auto max-w-screen-xl">
+    <div class="flex-column px-4">
       <p class="flex mb-2">Last Completed Item</p>
       <item-tile :item="lastCompletedItem" />
     </div>
-    <div class="flex-column ml-auto">
+    <div class="flex-column px-4">
       <p class="flex mb-2">Favorite item</p>
       <item-tile :item="favoriteItem" />
     </div>
