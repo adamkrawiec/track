@@ -1,6 +1,6 @@
 <template>
   <div class="flex mx-auto max-w-screen-xl">
-    <div class="flex-column px-4">
+    <div class="flex-column pr-4">
       <p class="flex mb-2">Last Completed Item</p>
       <item-tile :item="lastCompletedItem" />
     </div>

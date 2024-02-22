@@ -12,9 +12,13 @@
         :headers="headers"
       >
         <template #data-row="{ item: activity }">
-          <td>{{ activity.item.title }}</td>
-          <td>{{ activity.verb }}</td>
-          <td>{{ formatDate(activity.createdAt, SHORT_DATE_FORMAT) }}</td>
+          <td class="p-2">
+            <router-link :to="{ name: 'item-show', params: { itemId: activity.item.id }}">
+              {{ activity.item.title }}
+            </router-link>
+          </td>
+          <td class="p-2">{{ activity.verb }}</td>
+          <td class="p-2">{{ formatDate(activity.createdAt, SHORT_DATE_FORMAT) }}</td>
         </template>
       </main-table>
     </template>

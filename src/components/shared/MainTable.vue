@@ -1,5 +1,5 @@
 <template>
-  <table class="table-fixed border-collapse w-full border border-slate-400 border-slate-500 bg-white text-sm shadow-sm">
+  <table class="table-fixed border-collapse w-full border-0 bg-inherit text-sm shadow-sm">
     <table-header :headers="headers" />
     <tbody>
       <tr v-if="loading" >
@@ -14,7 +14,7 @@
       </tr>
       <tr
         v-else
-        class="bg-white border-b"
+        class="border-b"
         v-for="item in items"
         :key="`item-${item.id}`"
         :data-test="`item-${item.id}`"

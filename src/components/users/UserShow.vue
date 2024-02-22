@@ -2,15 +2,13 @@
   <div v-if="user" class="mx-auto">
     <main-panel>
       <template #body>
-        <div class="py-4">
-          <router-link
-            class="px-2 min-w-10"
-            :to="{ name: 'user-home', params: { userId: props.userId } }"
-          >
-            <img class="w-24" src="/avatar.jpeg">
-            <h4 class="px-4" data-test="user-name">{{ user.fullName }}</h4>
-          </router-link>
-        </div>
+        <router-link
+          class="px-2 min-w-10"
+          :to="{ name: 'user-home', params: { userId: props.userId } }"
+        >
+          <img class="w-24" src="/avatar.jpeg">
+          <h4 class="py-2" data-test="user-name">{{ user.fullName }}</h4>
+        </router-link>
         <div class="pt-4">
           <router-link
             class="px-2"

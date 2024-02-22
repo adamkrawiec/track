@@ -1,8 +1,10 @@
 <template>
   <main-panel>
-    <template #body>
-      <div class="mx-auto w-full max-w-4xl">
+    <template #header>
         <h1>List of users</h1>
+    </template>
+    <template #body>
+      <div class="w-full">
         <main-table
           :loading="loading"
           :items="users"
@@ -12,7 +14,7 @@
           >
           <template #data-row="{ item: user }">
             <td class="px-3 py-3 text-slate-500 text-slate-400 flex items-center">
-              <img class="w-16" src="/avatar.jpeg">
+              <img class="w-16 pr-2" src="/avatar.jpeg">
               <router-link :to="{ name: 'user-home', params: { userId: user.id } }">
                 {{ user.fullName }}
               </router-link>

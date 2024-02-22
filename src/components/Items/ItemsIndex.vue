@@ -1,8 +1,10 @@
 <template>
-    <main-panel>
+  <main-panel>
+    <template #header>
+      <h1>List of items</h1>
+    </template>
     <template #body>
-      <div class="mx-auto w-full max-w-4xl">
-        <h1 class="pb-2">Items list</h1>
+      <div>
         <div class="py-2">
           Search
           <input class="px-1 border-2 rounded-md" v-model="search" />
